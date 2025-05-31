@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Romantic Falling Text</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: black;
+      color: pink;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .falling-text {
+      position: absolute;
+      white-space: nowrap;
+      font-size: 20px;
+      animation: fall linear infinite;
+      color: #ff69b4;
+      text-shadow: 0 0 10px #ff69b4;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100%);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    const phrases = [
+      "Cảm ơn vì đã đến",
+      "I LOVE YOU",
+      "NAMIII",
+      "HAPPY",
+      "❤️🥰💞",
+      "LOVE YOU",
+    ];
+
+    function createFallingText() {
+      const text = document.createElement("div");
+      text.classList.add("falling-text");
+      text.textContent = phrases[Math.floor(Math.random() * phrases.length)];
+      text.style.left = Math.random() * window.innerWidth + "px";
+      text.style.animationDuration = (3 + Math.random() * 5) + "s";
+      document.body.appendChild(text);
+
+      setTimeout(() => {
+        text.remove();
+      }, 8000);
+    }
+
+    setInterval(createFallingText, 300);
+  </script>
+</body>
+</html>
