@@ -14,13 +14,19 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    .falling-text {
+    .falling-text, .falling-image {
       position: absolute;
       white-space: nowrap;
-      font-size: 20px;
       animation: fall linear infinite;
       color: #ff69b4;
       text-shadow: 0 0 10px #ff69b4;
+    }
+
+    .falling-image img {
+      width: 50px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 105, 180, 0.7);
     }
 
     @keyframes fall {
@@ -33,21 +39,6 @@
         opacity: 0;
       }
     }
-
-    .image-container {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      display: flex;
-      gap: 10px;
-    }
-
-    .image-container img {
-      width: 100px;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(255, 105, 180, 0.7);
-    }
   </style>
 </head>
 <body>
@@ -59,6 +50,12 @@
       "HAPPY",
       "❤️🥰💞",
       "LOVE YOU",
+    ];
+
+    const imageUrls = [
+      "https://i.imgur.com/UO4FI9F.png",
+      "https://i.imgur.com/zLh2vvw.png",
+      "https://i.imgur.com/KGn4LD4.png"
     ];
 
     function createFallingText() {
@@ -74,13 +71,25 @@
       }, 8000);
     }
 
-    setInterval(createFallingText, 300);
-  </script>
+    function createFallingImage() {
+      const imageWrapper = document.createElement("div");
+      imageWrapper.classList.add("falling-image");
+      imageWrapper.style.left = Math.random() * window.innerWidth + "px";
+      imageWrapper.style.animationDuration = (3 + Math.random() * 5) + "s";
 
-  <div class="image-container">
-    <img src="https://i.imgur.com/UO4FI9F.png" alt="Image 1">
-    <img src="https://i.imgur.com/zLh2vvw.png" alt="Image 2">
-    <img src="https://i.imgur.com/KGn4LD4.png" alt="Image 3">
-  </div>
+      const img = document.createElement("img");
+      img.src = imageUrls[Math.floor(Math.random() * imageUrls.length)];
+      imageWrapper.appendChild(img);
+
+      document.body.appendChild(imageWrapper);
+
+      setTimeout(() => {
+        imageWrapper.remove();
+      }, 8000);
+    }
+
+    setInterval(createFallingText, 300);
+    setInterval(createFallingImage, 1500);
+  </script>
 </body>
 </html>
