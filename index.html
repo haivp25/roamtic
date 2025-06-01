@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -34,14 +33,29 @@
         opacity: 0;
       }
     }
+
+    .image-container {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .image-container img {
+      width: 100px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 105, 180, 0.7);
+    }
   </style>
 </head>
 <body>
   <script>
     const phrases = [
       "Cảm ơn vì đã đến",
-      "Hẹ hẹ hẹ",
-      "Chào Trangg nhoo, là anh đâyy",
+      "Hẹ Hẹ Hẹ",
+      "Chào Trangg nho",
       "HAPPY",
       "❤️🥰💞",
       "LOVE YOU",
@@ -62,5 +76,11 @@
 
     setInterval(createFallingText, 300);
   </script>
+
+  <div class="image-container">
+    <img src="./20eb5a9a-0aed-4003-86cf-2880b5ceeecf.png" alt="Image 1">
+    <img src="./ef040139-2a0e-4252-987a-3ab805c8f8d4.png" alt="Image 2">
+    <img src="./d61cea7c-71d6-43d0-b43c-fd4a284ae564.png" alt="Image 3">
+  </div>
 </body>
 </html>
